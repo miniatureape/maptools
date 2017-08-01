@@ -1,5 +1,5 @@
 import ExplorationMap from './ExplorationMap';
-import ContextMap from './ContextMap';
+import ContextMap from '../containers/ContextMap';
 import 'style-loader!./App.css'
 
 function App(props) {
