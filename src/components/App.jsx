@@ -1,8 +1,9 @@
 import ExplorationMap from './ExplorationMap';
 import ContextMap from './ContextMap';
+import 'style-loader!./App.css'
 
 function App(props) {
-    return <div>
+    return <div className="app-wrapper">
                <ExplorationMap />
                <ContextMap />
            </div>

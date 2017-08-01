@@ -1,0 +1,14 @@
+.app-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.exploration-map {
+    flex: 1;
+}
+
+.context-map {
+    flex: 1;
+}
+

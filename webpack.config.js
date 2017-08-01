@@ -28,7 +28,8 @@ module.exports = {
             "React": "react",
         }),
         new HtmlWebpackPlugin({
-            template: 'src/index.html.template'
+            template: 'src/index.html.template',
+            inject: 'body'
         })
      ],
  };
