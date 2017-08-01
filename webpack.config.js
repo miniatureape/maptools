@@ -27,6 +27,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             "React": "react",
         }),
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            template: 'src/index.html.template'
+        })
      ],
  };
