@@ -1,4 +1,4 @@
-import ExplorationMap from './ExplorationMap';
+import ExplorationMap from '../containers/ExplorationMap';
 import ContextMap from '../containers/ContextMap';
 import 'style-loader!./App.css'
 

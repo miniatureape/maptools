@@ -6,18 +6,14 @@ class ContextMap extends React.Component {
         return (
             <div className="context-map">
                 <GoogleMapReact
-                     defaultCenter={this.props.center}
-                     defaultZoom={this.props.zoom}
+                     bootstrapURLKeys={{key: "AIzaSyBYAJ51pvSmz9Vp30WSlNDdE7k5ZSsmGSM"}}
+                     center={this.props.center}
+                     defaultZoom={this.props.contextMap.zoom}
                 >
                 </GoogleMapReact>
             </div>
         )
     }
-}
-
-ContextMap.defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
-    zoom: 11
 }
 
 export default ContextMap;

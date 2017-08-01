@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import ContextMap from '../components/ContextMap';
 
 function mapStateToProps(state) {
-    console.log(state);
-    return {};
+    return {
+        ...state
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-    console.log(dispatch);
     return {};
 }
 
