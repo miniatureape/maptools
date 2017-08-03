@@ -7,5 +7,5 @@ export default function(options) {
         contextMap = new MapWrapper(contextMapEl);
 
     explorationMap.setStore(options.store);
-    contextMap.setStore(options.store);
+    explorationMap.connectCenter(contextMap.getMap());
 }

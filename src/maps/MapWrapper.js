@@ -22,12 +22,16 @@ const events = [
 
 class MapWrapper {
 
-    dispatch: null
-    map: null
+    dispatch: null 
+    map: null 
     listeners: []
 
     constructor(el) {
         this.map = new google.maps.Map(el, {center: {lat: -34.397, lng: 150.644}, zoom: 6});
+    }
+
+    getMap() {
+        return this.map;
     }
 
     setStore(store) {
@@ -54,7 +58,11 @@ class MapWrapper {
     }
 
     storeListener() {
-        console.log('map has heard store change', this.store);
+        console.log('map has heard store change');
+    }
+
+    connectCenter(otherMap) {
+        this.map.addListener('center_changed', () => otherMap.setCenter(this.map.getCenter()));
     }
 
 }
