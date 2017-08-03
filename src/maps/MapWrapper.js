@@ -1,4 +1,5 @@
-const events = [
+const events = []
+/*
     "bounds_changed",
     "center_changed",
     "click",
@@ -19,6 +20,7 @@ const events = [
     "tilt_changed",
     "zoom_changed",
 ]
+*/
 
 class MapWrapper {
 
