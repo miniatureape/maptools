@@ -4,5 +4,10 @@ A tool for doing advance research of a place.
 
 ## TODOS
 
-- [ ] I think we want to turn the maps wrapper into a component so we can turn the context map on and off via redux state.
-- [ ] Then we'll map the maps components that return false from shouldComponentUpdate and react should gtfo and leave it alone.
+- Figure out what I need to do to get the map to fill the container after I toggle it.
+- Start on the UI
+    - There is a button that exposes the UI.
+    - List of places if any.
+    - A button to set one as "Home"
+- Add place selecttion to map:
+    - If you select a place, we show a UI to save it.
