@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import App from './components/App';
 import store from './store';
-import mapInitializer from './maps/initializer';
 import * as indexCss from './index.css';
 
 
 window.initMaps = () => {
-    mapInitializer({
-        store: store
-    });
     ReactDOM.render(
         <Provider store={store}>
             <App />

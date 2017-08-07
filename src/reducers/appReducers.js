@@ -1,5 +1,4 @@
 const appReducers = (state = [], action) => {
-    console.log('reducer', action.type);
     switch (action.type) {
         case 'TOGGLE_CONTEXT_MAP':
             return {
@@ -17,6 +16,12 @@ const appReducers = (state = [], action) => {
             return {
                 ...state,
                 zoom: action.zoom
+            }
+            break;
+        case 'CHANGE_BOUNDS':
+            return {
+                ...state,
+                bounds: action.bounds
             }
             break;
         default:
