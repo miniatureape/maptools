@@ -5,6 +5,12 @@ const CONTEXT_MAP_ZOOM_OFFSET = 2;
 
 export default function(options) {
 
+    options.store.subscribe(function() {
+        if (options.store.getState().displayContextMap) {
+            document.getElementById('maps').classList.toggle('display-context');
+        }
+    });
+
     let explorationMapEl = document.getElementById('exploration-map'),
         contextMapEl = document.getElementById('context-map'),
         explorationMap = new MapWrapper(explorationMapEl, 

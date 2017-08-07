@@ -14,13 +14,17 @@ body,html {
     display: flex;
 }
 
+#maps.display-context #context-map {
+    flex: 1;
+}
+
 #exploration-map {
     flex: 2;
     height: 100%;
 }
 
 #context-map {
-    flex: 1;
+    flex: 0;
     height: 100%;
 }
 

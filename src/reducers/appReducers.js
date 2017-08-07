@@ -1,10 +1,9 @@
 const appReducers = (state = [], action) => {
     switch (action.type) {
-        case 'CENTER_MAP':
-            console.log('center map reducer', action.latLng);
+        case 'TOGGLE_CONTEXT_MAP':
             return {
                 ...state,
-                center: action.latLng
+                displayContextMap: !state.displayContextMap
             }
             break;
         default:
