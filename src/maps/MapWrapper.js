@@ -28,8 +28,8 @@ class MapWrapper {
     map: null 
     listeners: []
 
-    constructor(el) {
-        this.map = new google.maps.Map(el, {center: {lat: -34.397, lng: 150.644}, zoom: 6});
+    constructor(el, options) {
+        this.map = new google.maps.Map(el, options);
     }
 
     getMap() {
@@ -63,8 +63,32 @@ class MapWrapper {
         console.log('map has heard store change');
     }
 
-    connectCenter(otherMap) {
-        this.map.addListener('center_changed', () => otherMap.setCenter(this.map.getCenter()));
+    /*
+     * options
+     *   zoomDiff = amount map should differ from linked map
+     *   rectStyles = passed to google maps polygon constructor
+     */
+    connectCenter(otherMap, options) {
+        let rect, zoomDiff = options.zoomDiff;
+        otherMap.addListener('center_changed', () => this.map.setCenter(otherMap.getCenter()));
+        otherMap.addListener('zoom_changed', () => this.map.setZoom(otherMap.getZoom() - options.zoomDiff));
+        otherMap.addListener('bounds_changed', () => {
+
+            if (rect) {
+                rect.setMap(null);
+            }
+
+            rect = new google.maps.Rectangle({
+                ...options.rectStyle,
+                map: this.map,
+                bounds: otherMap.getBounds(),
+            });
+
+        }); 
+
+        this.map.addListener('zoom_changed', () => { 
+            zoomDiff = otherMap.getZoom() - this.map.getZoom()
+        });
     }
 
 }
