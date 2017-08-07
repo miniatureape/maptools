@@ -19,28 +19,6 @@ function ToggleButton(props) {
 
 let ToggleButtonContainer = connect(undefined, mapDispatchToProps)(ToggleButton)
 
-/*
- *
- * We have two maps. One of them dispatches a change center
- * whenever its center is changed. One of the them changeds its
- * center based on the first maps center.
- *
- * Map Two has a render that always returns the same dom and sets
- * its center and zoom based on changes to it.
- *
- * Map One has a render that doesn't do anything. 
- *
- * What owns the dom element?
- * What owns the JS map Object?
- * How to share common initialization?
- *
- * 1. Duplication. Each map just initializas its onw map element.
- *    This seems totally fine
- *
- * 2. Composition. This is much trickier.
- *
- */
-
 class ExplorationMap extends React.Component {
     componentDidMount() {
         this.map = new google.maps.Map(this.mapEl, {center: this.props.center, zoom: this.props.zoom});
