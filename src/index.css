@@ -3,28 +3,27 @@ body,html {
     height: 100%;
 }
 
-#wrapper, #root, .app-wrapper {
+#root, .app-wrapper, .map-wrapper {
     width: 100%;
     height: 100%;
 }
 
-#maps {
-    width: 100%;
-    height: 100%;
+.map-wrapper {
     display: flex;
 }
 
-#maps.display-context #context-map {
-    flex: 1;
-}
 
-#exploration-map {
+.exploration-map {
     flex: 2;
     height: 100%;
 }
 
-#context-map {
+.context-map {
     flex: 0;
     height: 100%;
+}
+
+.display-context .context-map {
+    flex: 1;
 }
 

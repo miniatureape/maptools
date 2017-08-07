@@ -37,7 +37,7 @@ class ExplorationMap extends React.Component {
         });
     }
     render() {
-        return <div className="exploration-map" style={{width: "50%", height: "100%", "float": "left"}} ref={(el) => this.mapEl = el}></div>
+        return <div className="exploration-map" ref={(el) => this.mapEl = el}></div>
     }
 }
 
@@ -61,16 +61,16 @@ class ContextMap extends React.Component {
         this.rectangle = this.makeBoundaryRectangle(this.map, this.props.bounds);
 
         return <div 
+                className="context-map"
                 key="context-map" 
                 ref={(el) => this.mapEl = el}
-                style={{width: "50%", height: "100%"}}></div>
+                ></div>
     }
 
     makeBoundaryRectangle(map, bounds) {
         if (!bounds) {
             return;
         }
-        console.log('setting rect', bounds);
         return new google.maps.Rectangle({
             strokeColor: '#FF0000',
             strokeOpacity: 1,
@@ -111,11 +111,23 @@ let ExplorationMapContainer = connect((state) => {
     }
 })(ExplorationMap);
 
+function MapView(props) {
+    let displayContextMapClassname = props.displayContextMap ? 'display-context map-wrapper' : 'map-wrapper';
+    return <div className={displayContextMapClassname}>{props.children}</div>
+}
+
+let MapViewContainer = connect(function(state) {
+    return state;
+})(MapView);
+
 function App(props) {
     return (
         <div className="app-wrapper">
-            <ExplorationMapContainer />
-            <ContextMapContainer />
+            <MapViewContainer>
+                <ExplorationMapContainer />
+                <ContextMapContainer />
+            </MapViewContainer>
+            <ToggleButtonContainer />
         </div>
     )
 }
