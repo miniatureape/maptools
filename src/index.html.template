@@ -9,10 +9,12 @@
           <!-- React owns the root -->
           <div id='root'></div>
           <!-- Google maps own the maps -->
+          <!--
           <div id="maps">
               <div id="exploration-map" ></div>
               <div id="context-map" ></div>
           </div>
+          -->
       </div>
   </body>
 </html>
