@@ -31,15 +31,60 @@ class ExplorationMap extends React.Component {
         this.map.addListener('bounds_changed', () => {
             this.props.changeBounds(this.map.getBounds())
         });
+        this.map.addListener('click', (e) => {
+            if (e.placeId) {
+                e.stop();
+                this.props.setActivePlace(e.latLng, e.placeId);
+            } else {
+                // TODO: clear active place? Probably need to do this in a lot of places
+            }
+        });
         this.props.dispatch({
             type: 'CHANGE_BOUNDS',
             bounds: this.map.getBounds()
         });
     }
     render() {
-        return <div className="exploration-map" ref={(el) => this.mapEl = el}></div>
+        return (
+                <div className="exploration-map" ref={(el) => this.mapEl = el}>
+                    { this.props.activePlace 
+                        && <ActivePlaceContainer 
+                            map={this.map} 
+                            activePlace={this.props.activePlace} /> }
+                </div>
+        )
     }
 }
+
+
+class ActivePlace extends React.Component {
+    infoWidow: null
+    placesService: null
+    componentDidMount() {
+        this.infoWindow = new google.maps.InfoWindow;
+        this.infoWindow.setContent("");
+        this.infoWindow.setPosition(this.props.activePlace.latLng);
+        this.infoWindow.open(this.props.map);
+        this.infoWindow.addListener('closeclick', (e) => {
+            this.props.dispatch({
+                type: 'CLEAR_ACTIVE_PLACE',
+            });
+            return false;
+        } );
+        this.placesService = new google.maps.places.PlacesService(this.props.map);
+        this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
+            this.infoWindow.setContent(place.name);
+        });
+    }
+    render() {
+        return null;
+    }
+    componentWillUnmount() {
+        this.infoWindow.close();
+    }
+}
+
+let ActivePlaceContainer = connect()(ActivePlace);
 
 class ContextMap extends React.Component {
 
@@ -47,6 +92,7 @@ class ContextMap extends React.Component {
         this.map = new google.maps.Map(this.mapEl, {center: this.props.center, zoom: this.props.zoom});
         this.rectangle = this.makeBoundaryRectangle(this.map, this.props.bounds);
     }
+
 
     render() {
 
@@ -107,7 +153,16 @@ let ExplorationMapContainer = connect((state) => {
         changeBounds: (bounds) => dispatch({
             type: 'CHANGE_BOUNDS',
             bounds: bounds
-        })
+        }),
+        setActivePlace: (latLng, placeId) => {
+            dispatch({
+                type: 'SET_ACTIVE_PLACE',
+                activePlace: {
+                    latLng: latLng,
+                    placeId: placeId
+                }
+            });
+        }
     }
 })(ExplorationMap);
 

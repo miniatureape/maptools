@@ -8,7 +8,7 @@ let store = createStore(appReducers, {
         lng: -74.0059
     },
     bounds: null,
-    zoom: 5,
+    zoom: 12,
 });
 
 export default store;
