@@ -19,11 +19,6 @@ body,html {
 }
 
 .context-map {
-    flex: 0;
+    flex: 1;
     height: 100%;
 }
-
-.display-context .context-map {
-    flex: 1;
-}
-

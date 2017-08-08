@@ -111,25 +111,18 @@ let ExplorationMapContainer = connect((state) => {
     }
 })(ExplorationMap);
 
-function MapView(props) {
-    let displayContextMapClassname = props.displayContextMap ? 'display-context map-wrapper' : 'map-wrapper';
-    return <div className={displayContextMapClassname}>{props.children}</div>
-}
-
-let MapViewContainer = connect(function(state) {
-    return state;
-})(MapView);
-
 function App(props) {
     return (
-        <div className="app-wrapper">
-            <MapViewContainer>
-                <ExplorationMapContainer />
-                <ContextMapContainer />
-            </MapViewContainer>
-            <ToggleButtonContainer />
-        </div>
+            <div className="app-wrapper">
+                <div className="map-wrapper">
+                    <ExplorationMapContainer />
+                    { props.displayContextMap && <ContextMapContainer /> }
+                </div>
+                <ToggleButtonContainer />
+            </div>
     )
 }
 
-export default App;
+let AppContainer = connect((state) => state)(App)
+
+export default AppContainer;
