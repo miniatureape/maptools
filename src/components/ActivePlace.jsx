@@ -1,4 +1,5 @@
 import React from 'react';
+import InfoWindowContents from '../containers/InfoWindowContents'
 
 export default class ActivePlace extends React.Component {
 
@@ -18,7 +19,7 @@ export default class ActivePlace extends React.Component {
         this.placesService = new google.maps.places.PlacesService(this.props.map);
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
             // TODO We need to add more information here, but for now save the place
-            let iw = new InfoWindowContentsContainer(this.props);
+            let iw = new InfoWindowContents(this.props);
             this.infoWindow.setContent(ReactDOMServer.renderToString(iw));
         });
     }

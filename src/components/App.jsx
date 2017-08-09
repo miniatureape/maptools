@@ -23,24 +23,6 @@ function ToggleButton(props) {
 
 let ToggleButtonContainer = connect(undefined, mapDispatchToProps)(ToggleButton)
 
-function InfoWindowContents(props) {
-    return (
-        <div>
-            <span>{props.placeName}</span>
-            <a onClick={props.savePlace}>save</a>
-        </div>
-    )
-}
-
-let InfoWindowContentsContainer = connect(undefined, function(dispatch) {
-    return {
-        savePlace: (place) => {
-            dispatch({ type: 'SAVE_PLACE', place: place })
-        }
-    }
-})(InfoWindowContents)
-
-
 
 function App(props) {
     return (
