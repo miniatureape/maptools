@@ -1,5 +1,8 @@
 import React from 'react';
+import { Provider } from 'react-redux'
+
 import ActivePlace from '../containers/ActivePlace'
+import InfoWindowContents from '../containers/InfoWindowContents'
 
 export default class ExplorationMap extends React.Component {
     componentDidMount() {
@@ -32,7 +35,14 @@ export default class ExplorationMap extends React.Component {
                     { this.props.activePlace 
                         && <ActivePlace
                             map={this.map} 
-                            activePlace={this.props.activePlace} /> }
+                            activePlace={this.props.activePlace}
+                            >
+                                {/* We need to explicitly wrap the child in a Provider because
+                                    it is rendered via react server dom renderer.*/}
+                                <Provider store={this.props.store}>
+                                    <InfoWindowContents />
+                                </Provider>
+                           </ActivePlace> }
                 </div>
         )
     }

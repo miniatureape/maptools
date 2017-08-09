@@ -7,13 +7,13 @@ import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
 
 function App(props) {
     return (
-            <div className="app-wrapper">
-                <div className="map-wrapper">
-                    <ExplorationMap />
-                    { props.displayContextMap && <ContextMap /> }
-                </div>
-                <ContextMapDisplayToggle />
+        <div className="app-wrapper">
+            <div className="map-wrapper">
+                <ExplorationMap store={props.store} />
+                { props.displayContextMap && <ContextMap /> }
             </div>
+            <ContextMapDisplayToggle />
+        </div>
     )
 }
 
