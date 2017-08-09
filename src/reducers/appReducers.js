@@ -40,7 +40,6 @@ const appReducers = (state = [], action) => {
                 activePlaceDetails: action.activePlaceDetails
             }
         case 'SAVE_PLACE':
-            console.log(action.place)
             return {
                 ...state,
                 places: [...state.places, action.place]

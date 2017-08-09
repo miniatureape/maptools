@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ExplorationMap from '../containers/ExplorationMap'
 import ContextMap from '../containers/ContextMap'
 import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
+import PlaceList from '../containers/PlaceList'
 
 function App(props) {
     return (
@@ -12,6 +13,7 @@ function App(props) {
                 <ExplorationMap store={props.store} />
                 { props.displayContextMap && <ContextMap /> }
             </div>
+            <PlaceList />
             <ContextMapDisplayToggle />
         </div>
     )
