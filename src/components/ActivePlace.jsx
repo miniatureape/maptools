@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server'
 
 export default class ActivePlace extends React.Component {
 
@@ -8,7 +7,7 @@ export default class ActivePlace extends React.Component {
     placesService: null
 
     componentDidMount() {
-        this.infoWindow = new google.maps.InfoWindow({content: ''});
+        this.infoWindow = new google.maps.InfoWindow({content: '<div id="info-window-wrapper"></div>'});
         this.infoWindow.setPosition(this.props.activePlace.latLng);
         this.infoWindow.open(this.props.map);
         this.infoWindow.addListener('closeclick', (e) => {
@@ -17,20 +16,17 @@ export default class ActivePlace extends React.Component {
             });
             return false;
         } );
+        this.infoWindow.addListener('click', (e) => {
+            console.log('clicked');
+        })
         this.placesService = new google.maps.places.PlacesService(this.props.map);
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
             this.props.dispatch({
                 type: 'SET_ACTIVE_PLACE_DETAILS',
                 activePlaceDetails: place
             });
-            const content = this.renderChildren();
-            this.infoWindow.setContent(content);
+            ReactDOM.render(this.props.children, document.getElementById('info-window-wrapper'));
         });
-    }
-
-    renderChildren() {
-        const {children} = this.props;
-        return ReactDOMServer.renderToString(children);
     }
 
     render() {

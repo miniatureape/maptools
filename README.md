@@ -14,5 +14,4 @@ A tool for doing advance research of a place.
         - It should say the place name.
         - If there is a home set, it should fetch travel times and display them there.
         - There should be a button to save it to your places
-            -  DO NEXT: You need to manually bind this event since this component is rendered as a string and it doesn't preserve event handling.
     - If you select a place, we show a UI to save it.
