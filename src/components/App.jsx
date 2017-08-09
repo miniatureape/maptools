@@ -1,6 +1,5 @@
 import 'style-loader!./App.css'
-import {connect} from 'react-redux'
-import ReactDOMServer from 'react-dom/server'
+import { connect } from 'react-redux';
 
 import ExplorationMap from '../containers/ExplorationMap'
 import ContextMap from '../containers/ContextMap'
