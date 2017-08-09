@@ -1,4 +1,5 @@
 import React from 'react';
+import ActivePlace from '../containers/ActivePlace'
 
 export default class ExplorationMap extends React.Component {
     componentDidMount() {
@@ -29,7 +30,7 @@ export default class ExplorationMap extends React.Component {
         return (
                 <div className="exploration-map" ref={(el) => this.mapEl = el}>
                     { this.props.activePlace 
-                        && <ActivePlaceContainer 
+                        && <ActivePlace
                             map={this.map} 
                             activePlace={this.props.activePlace} /> }
                 </div>
