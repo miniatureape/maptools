@@ -1,5 +1,8 @@
 import 'style-loader!./App.css'
 import {connect} from 'react-redux'
+import ReactDOMServer from 'react-dom/server'
+
+import ExplorationMap from '../containers/ExplorationMap'
 
 const ZOOM_DIFF = 2;
 
@@ -19,50 +22,28 @@ function ToggleButton(props) {
 
 let ToggleButtonContainer = connect(undefined, mapDispatchToProps)(ToggleButton)
 
-class ExplorationMap extends React.Component {
-    componentDidMount() {
-        this.map = new google.maps.Map(this.mapEl, {center: this.props.center, zoom: this.props.zoom});
-        this.map.addListener('center_changed', () => {
-            this.props.changeCenter(this.map.getCenter())
-        });
-        this.map.addListener('zoom_changed', () => {
-            this.props.changeZoom(this.map.getZoom())
-        });
-        this.map.addListener('bounds_changed', () => {
-            this.props.changeBounds(this.map.getBounds())
-        });
-        this.map.addListener('click', (e) => {
-            if (e.placeId) {
-                e.stop();
-                this.props.setActivePlace(e.latLng, e.placeId);
-            } else {
-                // TODO: clear active place? Probably need to do this in a lot of places
-            }
-        });
-        this.props.dispatch({
-            type: 'CHANGE_BOUNDS',
-            bounds: this.map.getBounds()
-        });
-    }
-    render() {
-        return (
-                <div className="exploration-map" ref={(el) => this.mapEl = el}>
-                    { this.props.activePlace 
-                        && <ActivePlaceContainer 
-                            map={this.map} 
-                            activePlace={this.props.activePlace} /> }
-                </div>
-        )
-    }
+function InfoWindowContents(props) {
+    return (
+        <div>
+            <span>{props.placeName}</span>
+            <a onClick={props.savePlace}>save</a>
+        </div>
+    )
 }
 
+let InfoWindowContentsContainer = connect(undefined, function(dispatch) {
+    return {
+        savePlace: (place) => {
+            dispatch({ type: 'SAVE_PLACE', place: place })
+        }
+    }
+})(InfoWindowContents)
 
 class ActivePlace extends React.Component {
     infoWidow: null
     placesService: null
     componentDidMount() {
-        this.infoWindow = new google.maps.InfoWindow;
-        this.infoWindow.setContent("");
+        this.infoWindow = new google.maps.InfoWindow({content: ''});
         this.infoWindow.setPosition(this.props.activePlace.latLng);
         this.infoWindow.open(this.props.map);
         this.infoWindow.addListener('closeclick', (e) => {
@@ -73,7 +54,9 @@ class ActivePlace extends React.Component {
         } );
         this.placesService = new google.maps.places.PlacesService(this.props.map);
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
-            this.infoWindow.setContent(place.name);
+            // TODO We need to add more information here, but for now save the place
+            let iw = new InfoWindowContentsContainer(this.props);
+            this.infoWindow.setContent(ReactDOMServer.renderToString(iw));
         });
     }
     render() {
@@ -92,7 +75,6 @@ class ContextMap extends React.Component {
         this.map = new google.maps.Map(this.mapEl, {center: this.props.center, zoom: this.props.zoom});
         this.rectangle = this.makeBoundaryRectangle(this.map, this.props.bounds);
     }
-
 
     render() {
 
@@ -137,40 +119,12 @@ let ContextMapContainer = connect(function(state) {
 }, undefined)(ContextMap);
 
 
-let ExplorationMapContainer = connect((state) => { 
-        return state;
-    }, function(dispatch) {
-    return {
-        dispatch,
-        changeCenter: (center) => dispatch({
-            type: "CHANGE_CENTER",
-            center: center
-        }),
-        changeZoom: (zoom) => dispatch({
-            type: 'CHANGE_ZOOM',
-            zoom: zoom
-        }),
-        changeBounds: (bounds) => dispatch({
-            type: 'CHANGE_BOUNDS',
-            bounds: bounds
-        }),
-        setActivePlace: (latLng, placeId) => {
-            dispatch({
-                type: 'SET_ACTIVE_PLACE',
-                activePlace: {
-                    latLng: latLng,
-                    placeId: placeId
-                }
-            });
-        }
-    }
-})(ExplorationMap);
 
 function App(props) {
     return (
             <div className="app-wrapper">
                 <div className="map-wrapper">
-                    <ExplorationMapContainer />
+                    <ExplorationMap />
                     { props.displayContextMap && <ContextMapContainer /> }
                 </div>
                 <ToggleButtonContainer />

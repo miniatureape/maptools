@@ -34,6 +34,11 @@ const appReducers = (state = [], action) => {
                 ...state,
                 activePlace: null
             }
+        case 'SAVE_PLACE':
+            return {
+                ...state,
+                places: [...state.places, action.place]
+            }
         default:
             return state;
     }

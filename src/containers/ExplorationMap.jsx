@@ -1,22 +1,31 @@
 import { connect } from 'react-redux';
 import ExplorationMap from '../components/ExplorationMap';
-import { setCenter } from '../actions/index.js';
 
-function mapStateToProps(state) {
+export default connect((state) => { 
+        return state;
+    }, function(dispatch) {
     return {
-        ...state
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        "setCenter": (center) => {
-            dispatch(setCenter(center))
+        dispatch,
+        changeCenter: (center) => dispatch({
+            type: "CHANGE_CENTER",
+            center: center
+        }),
+        changeZoom: (zoom) => dispatch({
+            type: 'CHANGE_ZOOM',
+            zoom: zoom
+        }),
+        changeBounds: (bounds) => dispatch({
+            type: 'CHANGE_BOUNDS',
+            bounds: bounds
+        }),
+        setActivePlace: (latLng, placeId) => {
+            dispatch({
+                type: 'SET_ACTIVE_PLACE',
+                activePlace: {
+                    latLng: latLng,
+                    placeId: placeId
+                }
+            });
         }
     }
-    return {};
-}
-
-let ExplorationMapContainer = connect(mapStateToProps, mapDispatchToProps)(ExplorationMap);
-
-export default ExplorationMapContainer;
+})(ExplorationMap);
