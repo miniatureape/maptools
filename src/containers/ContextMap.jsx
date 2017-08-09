@@ -1,16 +1,9 @@
 import { connect } from 'react-redux';
 import ContextMap from '../components/ContextMap';
 
-function mapStateToProps(state) {
+export default connect(function(state) {
     return {
-        ...state
+        ...state,
+        zoom: state.zoom - ZOOM_DIFF
     };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {};
-}
-
-let ContextMapContainer = connect(mapStateToProps, mapDispatchToProps)(ContextMap);
-
-export default ContextMapContainer;
+}, undefined)(ContextMap);

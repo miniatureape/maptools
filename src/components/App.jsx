@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import ReactDOMServer from 'react-dom/server'
 
 import ExplorationMap from '../containers/ExplorationMap'
+import ContextMap from '../containers/ContextMap'
 
 const ZOOM_DIFF = 2;
 
@@ -69,63 +70,12 @@ class ActivePlace extends React.Component {
 
 let ActivePlaceContainer = connect()(ActivePlace);
 
-class ContextMap extends React.Component {
-
-    componentDidMount() {
-        this.map = new google.maps.Map(this.mapEl, {center: this.props.center, zoom: this.props.zoom});
-        this.rectangle = this.makeBoundaryRectangle(this.map, this.props.bounds);
-    }
-
-    render() {
-
-        if (this.map) {
-            this.map.panTo(this.props.center);
-            this.map.setZoom(this.props.zoom);
-        }
-
-        if (this.rectangle) {
-            this.rectangle.setMap(null);
-        } 
-        this.rectangle = this.makeBoundaryRectangle(this.map, this.props.bounds);
-
-        return <div 
-                className="context-map"
-                key="context-map" 
-                ref={(el) => this.mapEl = el}
-                ></div>
-    }
-
-    makeBoundaryRectangle(map, bounds) {
-        if (!bounds) {
-            return;
-        }
-        return new google.maps.Rectangle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 1,
-            strokeWeight: 1,
-            fillColor: '#000000',
-            fillOpacity: 0.0,
-            map: map,
-            bounds: bounds,
-        });
-    }
-}
-
-let ContextMapContainer = connect(function(state) {
-    return {
-        ...state,
-        zoom: state.zoom - ZOOM_DIFF
-    };
-}, undefined)(ContextMap);
-
-
-
 function App(props) {
     return (
             <div className="app-wrapper">
                 <div className="map-wrapper">
                     <ExplorationMap />
-                    { props.displayContextMap && <ContextMapContainer /> }
+                    { props.displayContextMap && <ContextMap /> }
                 </div>
                 <ToggleButtonContainer />
             </div>
