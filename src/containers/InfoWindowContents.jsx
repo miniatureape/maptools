@@ -1,11 +1,18 @@
 import { connect } from 'react-redux';
 import InfoWindowContents from '../components/InfoWindowContents'
 
-export default connect(undefined, function(dispatch) {
+function mapStateToProps(state) {
+    return state;
+}
+
+function mapDispatchToProps(dispatch) {
     return {
         savePlace: (place) => {
+            console.log('saving place');
             dispatch({ type: 'SAVE_PLACE', place: place })
         }
     }
-})(InfoWindowContents)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InfoWindowContents)
 

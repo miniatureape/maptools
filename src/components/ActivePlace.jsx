@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server'
 
 export default class ActivePlace extends React.Component {
@@ -18,6 +19,10 @@ export default class ActivePlace extends React.Component {
         } );
         this.placesService = new google.maps.places.PlacesService(this.props.map);
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
+            this.props.dispatch({
+                type: 'SET_ACTIVE_PLACE_DETAILS',
+                activePlaceDetails: place
+            });
             const content = this.renderChildren();
             this.infoWindow.setContent(content);
         });

@@ -9,6 +9,9 @@ let store = createStore(appReducers, {
     },
     bounds: null,
     zoom: 12,
+    activePlace: null,
+    activePlaceDetails: null,
+    places: [],
 });
 
 export default store;
