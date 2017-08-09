@@ -4,24 +4,10 @@ import ReactDOMServer from 'react-dom/server'
 
 import ExplorationMap from '../containers/ExplorationMap'
 import ContextMap from '../containers/ContextMap'
+import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
 
 const ZOOM_DIFF = 2;
 
-function mapDispatchToProps(dispatch) {
-    return {
-        toggleContextMap: function() {
-            dispatch({
-                type: "TOGGLE_CONTEXT_MAP",
-            });
-        }
-    }
-}
-
-function ToggleButton(props) {
-    return <button onClick={props.toggleContextMap}>Click Me</button>
-}
-
-let ToggleButtonContainer = connect(undefined, mapDispatchToProps)(ToggleButton)
 
 
 function App(props) {
@@ -31,7 +17,7 @@ function App(props) {
                     <ExplorationMap />
                     { props.displayContextMap && <ContextMap /> }
                 </div>
-                <ToggleButtonContainer />
+                <ContextMapDisplayToggle />
             </div>
     )
 }
