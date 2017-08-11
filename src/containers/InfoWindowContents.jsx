@@ -7,9 +7,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        savePlace: (place) => {
-            console.log('saving place');
-            dispatch({ type: 'SAVE_PLACE', place: place })
+        savePlace: (place, directions) => {
+            dispatch({ type: 'SAVE_PLACE', place: place, directions: directions })
         }
     }
 }

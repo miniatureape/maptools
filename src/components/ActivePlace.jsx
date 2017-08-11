@@ -19,9 +19,6 @@ export default class ActivePlace extends React.Component {
             });
             return false;
         } );
-        this.infoWindow.addListener('click', (e) => {
-            console.log('clicked');
-        })
 
         this.placesService = new google.maps.places.PlacesService(this.props.map);
         this.directionsMatrixService = new google.maps.DistanceMatrixService();
@@ -30,20 +27,29 @@ export default class ActivePlace extends React.Component {
 
             let home = findHome(this.props.places);
 
-            this.directionsMatrixService.getDistanceMatrix({
-                origins: [home.mapData.geometry.location],
-                destinations: [place.geometry.location],
-                travelMode: 'DRIVING',
-            }, (e) => this.showActivePlaceWIthDrivingTimes(e, place) );
+            if (home) {
+                this.directionsMatrixService.getDistanceMatrix({
+                    origins: [home.mapData.geometry.location],
+                    destinations: [place.geometry.location],
+                    travelMode: 'DRIVING',
+                }, (e) => this.showActivePlaceWIthDrivingTimes(e, place) );
+            } else {
+                this.props.dispatch({
+                    type: 'SET_ACTIVE_PLACE_DETAILS',
+                    activePlaceDetails: place,
+                    directions: null
+                });
+            }
 
             ReactDOM.render(this.props.children, document.getElementById('info-window-wrapper'));
         });
     }
 
-    showActivePlaceWIthDrivingTimes(results, place) {
+    showActivePlaceWIthDrivingTimes(directions, place) {
         this.props.dispatch({
             type: 'SET_ACTIVE_PLACE_DETAILS',
-            activePlaceDetails: place
+            activePlaceDetails: place,
+            directions: directions
         });
     }
 

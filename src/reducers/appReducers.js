@@ -1,8 +1,12 @@
-function createPlace(mapPlaceData) {
+function createPlace(mapPlaceData, directions) {
+    let travelTime = null;
+    if (directions) {
+        travelTime = directions.rows[0].elements[0].duration.text
+    }
     return {
         mapData: mapPlaceData,
         isHome: false,
-        travelTimes: null,
+        travelTime: travelTime,
         note: {
             message: "",
             isOpen: false,
@@ -49,17 +53,16 @@ const appReducers = (state = [], action) => {
         case 'SET_ACTIVE_PLACE_DETAILS':
             return {
                 ...state,
-                activePlaceDetails: action.activePlaceDetails
+                activePlaceDetails: action.activePlaceDetails,
+                activePlaceDirections: action.directions
             }
         case 'SAVE_PLACE':
             return {
                 ...state,
-                places: [...state.places, createPlace(action.place)]
+                places: [...state.places, createPlace(action.place, action.directions)]
             }
         case "SET_PLACE_AS_HOME":
-            console.log('set place as home');
             let places = state.places.map((place) => {
-                console.log(place.mapData.place_id === action.place.mapData.place_id);
                 place.isHome = place.mapData.place_id === action.place.mapData.place_id;
                 return place;
             });

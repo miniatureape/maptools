@@ -7,7 +7,6 @@ if (window.localStorage['state']) {
     defaultState = JSON.parse(window.localStorage['state']);
     // Hack around something in maps not liking the stored data.
     defaultState.activePlace = null;
-    console.log(defaultState);
 } else {
     defaultState = {
         displayContextMap: false,
@@ -19,6 +18,7 @@ if (window.localStorage['state']) {
         zoom: 12,
         activePlace: null,
         activePlaceDetails: null,
+        activePlaceDirections: null,
         places: [],
     }
 }
