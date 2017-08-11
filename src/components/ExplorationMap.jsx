@@ -3,10 +3,15 @@ import { Provider } from 'react-redux'
 
 import ActivePlace from '../containers/ActivePlace'
 import InfoWindowContents from '../containers/InfoWindowContents'
+import explorationMapConfig from '../config/explorationMap'
 
 export default class ExplorationMap extends React.Component {
     componentDidMount() {
-        this.map = new google.maps.Map(this.mapEl, {center: this.props.center, zoom: this.props.zoom});
+        this.map = new google.maps.Map(this.mapEl, {
+            ...explorationMapConfig, 
+            center: this.props.center, 
+            zoom: this.props.zoom
+        });
         this.map.addListener('center_changed', () => {
             this.props.changeCenter(this.map.getCenter())
         });
