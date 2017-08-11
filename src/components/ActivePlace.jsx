@@ -5,6 +5,7 @@ export default class ActivePlace extends React.Component {
 
     infoWidow: null
     placesService: null
+    directionsMatrixService: null
 
     componentDidMount() {
         this.infoWindow = new google.maps.InfoWindow({content: '<div id="info-window-wrapper"></div>'});
@@ -19,8 +20,18 @@ export default class ActivePlace extends React.Component {
         this.infoWindow.addListener('click', (e) => {
             console.log('clicked');
         })
+
         this.placesService = new google.maps.places.PlacesService(this.props.map);
+        this.directionsMatrixService = new google.maps.DistanceMatrixService();
+
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
+
+            /*
+             * TODO
+            this.directionsMatrixService.getDistanceMatrix({
+            });
+            */
+
             this.props.dispatch({
                 type: 'SET_ACTIVE_PLACE_DETAILS',
                 activePlaceDetails: place

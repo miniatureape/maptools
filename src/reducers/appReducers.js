@@ -56,6 +56,17 @@ const appReducers = (state = [], action) => {
                 ...state,
                 places: [...state.places, createPlace(action.place)]
             }
+        case "SET_PLACE_AS_HOME":
+            console.log('set place as home');
+            let places = state.places.map((place) => {
+                console.log(place.mapData.place_id === action.place.mapData.place_id);
+                place.isHome = place.mapData.place_id === action.place.mapData.place_id;
+                return place;
+            });
+            return {
+                ...state,
+                places: places
+            }
         default:
             return state;
     }

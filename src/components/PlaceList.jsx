@@ -1,7 +1,7 @@
 import React from 'react'
 
 import 'style-loader!./PlaceList.css'
-import PlaceListItem from './PlaceListItem'
+import PlaceListItem from '../containers/PlaceListItem'
 import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
 
 export default class PlaceList extends React.Component {
