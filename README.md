@@ -28,5 +28,9 @@ place
     - Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
     - When you save a place, the info window closes.
     - If there is a home set, it should fetch travel times and display them there.
+- Persistance
+    - On update, save store to local storage or something for now.
+    - On load read store from local storage or something.
+    - Figure out why google maps balks if I don't null out the active place
 - Other
     - Move clearfix into App.css
