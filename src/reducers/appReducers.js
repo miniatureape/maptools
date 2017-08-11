@@ -1,3 +1,15 @@
+function createPlace(mapPlaceData) {
+    return {
+        mapData: mapPlaceData,
+        isHome: false,
+        travelTimes: null,
+        note: {
+            message: "",
+            isOpen: false,
+        }
+    }
+}
+
 const appReducers = (state = [], action) => {
     switch (action.type) {
         case 'TOGGLE_CONTEXT_MAP':
@@ -42,7 +54,7 @@ const appReducers = (state = [], action) => {
         case 'SAVE_PLACE':
             return {
                 ...state,
-                places: [...state.places, action.place]
+                places: [...state.places, createPlace(action.place)]
             }
         default:
             return state;

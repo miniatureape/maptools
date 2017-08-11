@@ -18,7 +18,7 @@ export default class PlaceList extends React.Component {
         } else {
             contents = 
                 this.props.places.map((place) => { 
-                    return <PlaceListItem key={place.place_id} place={place} />;
+                    return <PlaceListItem key={place.mapData.place_id} place={place} />;
                 })
             
         }
