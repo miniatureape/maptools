@@ -34,3 +34,4 @@ place
     - Figure out why google maps balks if I don't null out the active place
 - Other
     - Move clearfix into App.css
+    - Consider changing "Home" to "Origin"

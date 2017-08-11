@@ -23,12 +23,19 @@ if (window.localStorage['state']) {
     }
 }
 
-
 let store = createStore(appReducers, defaultState);
 
 store.subscribe(function() {
     window.localStorage['state'] = JSON.stringify(store.getState());
 });
+
+export function findHome() {
+    return (store.getState())
+        .places
+        .map((place) => place.isHome ? place : null)
+        .filter(n => n)
+        .shift()
+}
 
 export default store;
 

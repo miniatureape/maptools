@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { findHome } from '../store'
+
 export default class ActivePlace extends React.Component {
 
     infoWidow: null
@@ -26,17 +28,22 @@ export default class ActivePlace extends React.Component {
 
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
 
-            /*
-             * TODO
-            this.directionsMatrixService.getDistanceMatrix({
-            });
-            */
+            let home = findHome(this.props.places);
 
-            this.props.dispatch({
-                type: 'SET_ACTIVE_PLACE_DETAILS',
-                activePlaceDetails: place
-            });
+            this.directionsMatrixService.getDistanceMatrix({
+                origins: [home.mapData.geometry.location],
+                destinations: [place.geometry.location],
+                travelMode: 'DRIVING',
+            }, (e) => this.showActivePlaceWIthDrivingTimes(e, place) );
+
             ReactDOM.render(this.props.children, document.getElementById('info-window-wrapper'));
+        });
+    }
+
+    showActivePlaceWIthDrivingTimes(results, place) {
+        this.props.dispatch({
+            type: 'SET_ACTIVE_PLACE_DETAILS',
+            activePlaceDetails: place
         });
     }
 
