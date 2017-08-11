@@ -4,8 +4,11 @@
     left: 10px;
     background: white;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-    padding: 8px;
     width: 350px;
+}
+
+#place-list .header, #place-list .message {
+    padding: 8px;
 }
 
 .clearfix {

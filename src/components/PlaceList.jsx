@@ -10,7 +10,7 @@ export default class PlaceList extends React.Component {
 
         if (this.props.places.length === 0) {
             contents = (
-            <div>
+            <div className="message">
                 <div>Click a place on the map to save it to your list. Once you set a place as home, you will see travel times for all other places.</div>
                 <div>You can leave notes on places and share this list them with someone else.</div>
             </div>
@@ -25,7 +25,7 @@ export default class PlaceList extends React.Component {
 
         return (
             <div id="place-list">
-                <div>
+                <div className="header">
                     <h4 className="float-left">Your Places</h4>
                     <ContextMapDisplayToggle />
                 </div>
