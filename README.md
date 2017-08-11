@@ -27,8 +27,6 @@ place
 - Exploration Map
     - Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
     - When you save a place, the info window closes.
-- Add place selection to map:
-    - Create a new component that represents the info window.
-        - [x] It should say the place name.
-        - [ ]If there is a home set, it should fetch travel times and display them there.
-    - [x] If you select a place, we show a UI to save it.
+    - If there is a home set, it should fetch travel times and display them there.
+- Other
+    - Move clearfix into App.css
