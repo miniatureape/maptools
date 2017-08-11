@@ -1,0 +1,8 @@
+#place-list {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    padding: 8px;
+}

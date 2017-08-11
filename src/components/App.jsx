@@ -1,9 +1,8 @@
-import 'style-loader!./App.css'
 import { connect } from 'react-redux';
 
+import 'style-loader!./App.css'
 import ExplorationMap from '../containers/ExplorationMap'
 import ContextMap from '../containers/ContextMap'
-import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
 import PlaceList from '../containers/PlaceList'
 
 function App(props) {
@@ -13,8 +12,8 @@ function App(props) {
                 <ExplorationMap store={props.store} />
                 { props.displayContextMap && <ContextMap /> }
             </div>
-            <PlaceList />
-            <ContextMapDisplayToggle />
+            <PlaceList>
+            </PlaceList>
         </div>
     )
 }

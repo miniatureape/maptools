@@ -5,9 +5,7 @@
       <title>Map</title>
   </head>
   <body>
-      <div id='wrapper'>
-          <!-- React owns the root -->
-          <div id='root'></div>
-      </div>
+      <!-- React owns the root -->
+      <div id='root'></div>
   </body>
 </html>
