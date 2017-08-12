@@ -1,5 +1,6 @@
 import React from 'react'
 import 'style-loader!./PlaceListItem.css'
+import BasicPlaceDetails from './BasicPlaceDetails'
 
 export default class PlaceListItem extends React.Component {
     render() {
@@ -14,13 +15,7 @@ export default class PlaceListItem extends React.Component {
 
         return (
         <div className="place-item clearfix">
-            <div>
-                <div className="float-left"><b>{place.mapData.name}</b></div>
-                <div className="float-right">{place.travelTime}</div>
-            </div>
-            <div className="clearfix">
-                <div>{place.mapData.formatted_address}</div>
-            </div>
+            <BasicPlaceDetails place={this.props.place} />
             <div>
                 <a className="button-clear float-left">Add Note</a>
                 {homeMarkup}
