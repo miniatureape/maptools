@@ -15,6 +15,7 @@ function createPlace(mapPlaceData, directions) {
 }
 
 const appReducers = (state = [], action) => {
+
     switch (action.type) {
         case 'TOGGLE_CONTEXT_MAP':
             return {
@@ -40,6 +41,7 @@ const appReducers = (state = [], action) => {
                 bounds: action.bounds
             }
             break;
+
         case 'SET_ACTIVE_PLACE':
             return {
                 ...state,
@@ -51,15 +53,15 @@ const appReducers = (state = [], action) => {
                 activePlace: null
             }
         case 'SET_ACTIVE_PLACE_DETAILS':
+            let activePlaceDetails = createPlace(action.activePlaceDetails, action.directions);
             return {
                 ...state,
-                activePlaceDetails: action.activePlaceDetails,
-                activePlaceDirections: action.directions
+                activePlaceDetails: activePlaceDetails,
             }
         case 'SAVE_PLACE':
             return {
                 ...state,
-                places: [...state.places, createPlace(action.place, action.directions)]
+                places: [...state.places, action.place]
             }
         case "SET_PLACE_AS_HOME":
             let places = state.places.map((place) => {

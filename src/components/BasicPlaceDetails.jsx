@@ -4,6 +4,7 @@ import 'style-loader!./PlaceListItem.css'
 export default class BasicPlaceDetails extends React.Component {
     render() {
         let place = this.props.place;
+        console.log('place', place);
         return (
             <div className="basic-place-details">
                 <div>

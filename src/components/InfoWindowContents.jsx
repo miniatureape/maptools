@@ -1,13 +1,14 @@
 import React from 'react';
+import BasicPlaceDetails from './BasicPlaceDetails'
 
 export default class InfoWindowContents extends React.Component {
 
     render() {
+        let place = this.props.activePlaceDetails;
         return (
             <div id="info-wrapper">
-                <div>{this.props.activePlaceDetails.name}</div>
-                <div>{this.props.activePlaceDetails.formatted_address}</div>
-                <div id="something" onClick={() => this.props.savePlace(this.props.activePlaceDetails, this.props.activePlaceDirections) }>save</div>
+                <BasicPlaceDetails place={place} />
+                <div id="something" onClick={() => this.props.savePlace(place) }>save</div>
             </div>
         )
     }

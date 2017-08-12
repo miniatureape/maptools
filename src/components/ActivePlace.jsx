@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { findHome } from '../store'
 
 export default class ActivePlace extends React.Component {
@@ -12,7 +11,6 @@ export default class ActivePlace extends React.Component {
     componentDidMount() {
         this.infoWindow = new google.maps.InfoWindow({content: '<div id="info-window-wrapper"></div>'});
         this.infoWindow.setPosition(this.props.activePlace.latLng);
-        this.infoWindow.open(this.props.map);
         this.infoWindow.addListener('closeclick', (e) => {
             this.props.dispatch({
                 type: 'CLEAR_ACTIVE_PLACE',
@@ -26,6 +24,7 @@ export default class ActivePlace extends React.Component {
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
 
             let home = findHome(this.props.places);
+            console.log('home', home);
 
             if (home) {
                 this.directionsMatrixService.getDistanceMatrix({
@@ -39,18 +38,25 @@ export default class ActivePlace extends React.Component {
                     activePlaceDetails: place,
                     directions: null
                 });
+                this.openInfoWindowAndRender()
             }
 
-            ReactDOM.render(this.props.children, document.getElementById('info-window-wrapper'));
         });
     }
 
+    openInfoWindowAndRender() {
+        this.infoWindow.open(this.props.map);
+        ReactDOM.render(this.props.children, document.getElementById('info-window-wrapper'));
+    }
+
     showActivePlaceWIthDrivingTimes(directions, place) {
+        console.log('showing with directions', directions, place);
         this.props.dispatch({
             type: 'SET_ACTIVE_PLACE_DETAILS',
             activePlaceDetails: place,
             directions: directions
         });
+        this.openInfoWindowAndRender();
     }
 
     render() {

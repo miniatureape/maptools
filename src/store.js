@@ -6,6 +6,7 @@ let defaultState;
 if (window.localStorage['state']) {
     defaultState = JSON.parse(window.localStorage['state']);
     // Hack around something in maps not liking the stored data.
+    // TODO: Figure out the exact cause of this and fix in a more general way.
     defaultState.activePlace = null;
 } else {
     defaultState = {
@@ -37,5 +38,4 @@ export function findHome() {
         .shift()
 }
 
-export default store;
-
+export { store };
