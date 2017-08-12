@@ -1,9 +1,10 @@
 import React from 'react';
+import contextMapConfig from '../config/contextMap'
 
 export default class ContextMap extends React.Component {
 
     componentDidMount() {
-        this.map = new google.maps.Map(this.mapEl, {center: this.props.center, zoom: this.props.zoom});
+        this.map = new google.maps.Map(this.mapEl, {...contextMapConfig, center: this.props.center, zoom: this.props.zoom});
         this.rectangle = this.makeBoundaryRectangle(this.map, this.props.bounds);
     }
 
