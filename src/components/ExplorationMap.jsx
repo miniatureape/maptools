@@ -43,7 +43,7 @@ export default class ExplorationMap extends React.Component {
                             activePlace={this.props.activePlace}
                             >
                                 {/* We need to explicitly wrap the child in a Provider because
-                                    it is rendered via react server dom renderer.*/}
+                                    it is rendered via react directly. */}
                                 <Provider store={this.props.store}>
                                     <InfoWindowContents />
                                 </Provider>
