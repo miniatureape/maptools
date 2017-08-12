@@ -27,6 +27,7 @@ export default class ExplorationMap extends React.Component {
                 this.props.setActivePlace(e.latLng, e.placeId);
             } else {
                 // TODO: clear active place? Probably need to do this in a lot of places
+                this.props.clearActivePlace();
             }
         });
         this.props.dispatch({

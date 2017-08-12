@@ -26,6 +26,11 @@ export default connect((state) => {
                     placeId: placeId
                 }
             });
+        },
+        clearActivePlace: () => {
+            dispatch({
+                type: 'CLEAR_ACTIVE_PLACE',
+            });
         }
     }
 })(ExplorationMap);
