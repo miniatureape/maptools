@@ -3,6 +3,7 @@ import React from 'react'
 import 'style-loader!./PlaceList.css'
 import PlaceListItem from '../containers/PlaceListItem'
 import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
+import SearchBox from './SearchBox'
 
 export default class PlaceList extends React.Component {
     render() {
@@ -26,7 +27,7 @@ export default class PlaceList extends React.Component {
         return (
             <div id="place-list">
                 <div className="header">
-                    <h4 className="float-left">Your Places</h4>
+                    <SearchBox />
                     <ContextMapDisplayToggle />
                 </div>
                 <div className="clearfix">

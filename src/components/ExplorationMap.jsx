@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux'
 import InfoWindowContents from '../containers/InfoWindowContents'
-
 import ActivePlace from '../containers/ActivePlace'
 import explorationMapConfig from '../config/explorationMap'
 

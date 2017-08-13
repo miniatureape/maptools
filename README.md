@@ -7,7 +7,7 @@ place
 {
     mapData: all the google maps data,
     isHome: bool,
-    travelTimes: all the google maps travel time.
+    travelTime: all the google maps travel time.
     note: {
         message: "",
         isOpen: bool,
@@ -25,6 +25,8 @@ place
         - [ ]  Text and submit button.
         - [ ]  If you open one, all the others close.
     - [ ] You can remove a place from the list
+    - [ ] YOu can search to move the map.
+        - [ ] When you search, there is an infowindow that allows you to save the location.
 - [ ]  Exploration Map
     - [ ]  Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
     - [ ]  When you save a place, the info window closes.
