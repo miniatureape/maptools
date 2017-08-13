@@ -1,11 +1,10 @@
 import 'style-loader!./ContextMapDisplayToggle.css'
+import MdMap from 'react-icons/lib/md/map'
 
 export default function ToggleButton(props) {
     return (
         <div className="float-right">
-            <button 
-                className="button-small button-outline"
-                onClick={props.toggleContextMap}>Show Context Map</button>
+            context <MdMap onClick={props.toggleContextMap} />
         </div>
     )
 }

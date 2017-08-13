@@ -1,6 +1,7 @@
 import React from 'react'
 import 'style-loader!./PlaceListItem.css'
 import BasicPlaceDetails from './BasicPlaceDetails'
+import MdCreate from 'react-icons/lib/md/create'
 
 export default class PlaceListItem extends React.Component {
     render() {
@@ -17,7 +18,9 @@ export default class PlaceListItem extends React.Component {
         <div className="place-item clearfix">
             <BasicPlaceDetails place={this.props.place} />
             <div>
-                <a className="button-clear float-left">Add Note</a>
+                <a className="button-clear float-left">
+                    <MdCreate />
+                </a>
                 {homeMarkup}
             </div>
         </div>
