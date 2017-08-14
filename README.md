@@ -28,9 +28,9 @@ place
     - [x] YOu can search to move the map.
         - [X] When you search, there is an infowindow that allows you to save the location.
             - [ ] (This might not actually be an issue.) If you search for a place that doesn't have a place id, you have some way of saving it. (key on latlng?)
-- [ ]  Exploration Map
+- [.]  Exploration Map
     - [x] Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
-    - [ ] When you save a place, the info window closes.
+    - [X] When you save a place, the info window closes.
     - [ ] You cannot save a place that youv'e alread saved. The button should not appear.
     - [x] If there is a home set, it should fetch travel times and display them there.
     - [ ] You need to think about this, but you probably do want to add markers. Either they're there all the time or when you select a place or something.

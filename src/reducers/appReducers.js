@@ -81,7 +81,8 @@ const appReducers = (state = [], action) => {
         case 'SAVE_PLACE':
             return {
                 ...state,
-                places: [...state.places, action.place]
+                places: [...state.places, action.place],
+                activePlace: null,
             }
         case "SET_PLACE_AS_ORIGIN":
             let places = state.places.map((place) => {
