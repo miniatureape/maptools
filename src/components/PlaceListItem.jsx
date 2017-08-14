@@ -9,6 +9,7 @@ export default class PlaceListItem extends React.Component {
 
         let place = this.props.place;
         let originMarkup;
+
         if (place.isOrigin) {
             originMarkup = <MdHome
                 className="float-right origin"
@@ -28,7 +29,7 @@ export default class PlaceListItem extends React.Component {
             <BasicPlaceDetails place={place} />
             <div>
                 { place.note.message && 
-                    <blockquote className="place-item-message">{place.note.message}</blockquote>
+                    <blockquote contentEditable={true} className="place-item-message">{place.note.message}</blockquote>
                 }
                 <MdCreate 
                     onClick={() => this.props.editNote(place)}

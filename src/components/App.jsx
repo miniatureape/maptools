@@ -4,6 +4,7 @@ import 'style-loader!./App.css'
 import ExplorationMap from '../containers/ExplorationMap'
 import ContextMap from '../containers/ContextMap'
 import PlaceList from '../containers/PlaceList'
+import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
 
 function App(props) {
     return (
@@ -12,8 +13,8 @@ function App(props) {
                 <ExplorationMap store={props.store} />
                 { props.displayContextMap && <ContextMap /> }
             </div>
-            <PlaceList>
-            </PlaceList>
+            <PlaceList />
+            <ContextMapDisplayToggle />
         </div>
     )
 }

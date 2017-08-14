@@ -110,7 +110,7 @@ const appReducers = (state = [], action) => {
                     if (place.mapData.place_id === action.place.mapData.place_id) {
                         place.note = {
                             ...place.note,
-                            message: action.message
+                            message: action.message.trim()
                         }
                     }
                     return place;
