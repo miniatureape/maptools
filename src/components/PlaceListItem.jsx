@@ -2,26 +2,34 @@ import React from 'react'
 import 'style-loader!./PlaceListItem.css'
 import BasicPlaceDetails from './BasicPlaceDetails'
 import MdCreate from 'react-icons/lib/md/create'
+import MdHome from 'react-icons/lib/md/home'
 
 export default class PlaceListItem extends React.Component {
     render() {
 
         let place = this.props.place;
-        let homeMarkup;
-        if (place.isHome) {
-            homeMarkup = <div className="float-right">Your home</div>
+        let originMarkup;
+        if (place.isOrigin) {
+            originMarkup = <MdHome
+                className="float-right origin"
+                title= "This is your origin"
+                onClick={() => this.props.setOrigin(place)}
+               />
         } else {
-            homeMarkup = <a onClick={() => this.props.setHome(place)} className="button-clear float-right">Make Home</a>
+            originMarkup = <MdHome
+                className="float-right origin not-origin"
+                title= "Set this as your origin"
+                onClick={() => this.props.setOrigin(place)}
+               />
         }
 
         return (
         <div className="place-item clearfix">
             <BasicPlaceDetails place={this.props.place} />
             <div>
-                <a className="button-clear float-left">
-                    <MdCreate />
-                </a>
-                {homeMarkup}
+                <MdCreate 
+                    className="float-left" />
+                {originMarkup}
             </div>
         </div>
         )

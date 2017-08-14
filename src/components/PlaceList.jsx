@@ -12,7 +12,7 @@ export default class PlaceList extends React.Component {
         if (this.props.places.length === 0) {
             contents = (
             <div className="message">
-                <div>Click a place on the map to save it to your list. Once you set a place as home, you will see travel times for all other places.</div>
+                <div>Click a place on the map to save it to your list. Once you set a place as origin, you will see travel times for all other places.</div>
                 <div>You can leave notes on places and share this list them with someone else.</div>
             </div>
             );
