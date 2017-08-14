@@ -18,13 +18,16 @@ export default class ActivePlace extends React.Component {
             return false;
         } );
 
+        this.infoWindow.addListener('domready', (e) => {
+            ReactDOM.render(this.props.children, document.getElementById('info-window-wrapper'));
+        });
+
         this.placesService = new google.maps.places.PlacesService(this.props.map);
         this.directionsMatrixService = new google.maps.DistanceMatrixService();
 
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
 
             let home = findHome(this.props.places);
-            console.log('home', home);
 
             if (home) {
                 this.directionsMatrixService.getDistanceMatrix({
@@ -38,7 +41,7 @@ export default class ActivePlace extends React.Component {
                     activePlaceDetails: place,
                     directions: null
                 });
-                this.openInfoWindowAndRender()
+                this.openInfoWindowAndRender();
             }
 
         });
@@ -46,11 +49,9 @@ export default class ActivePlace extends React.Component {
 
     openInfoWindowAndRender() {
         this.infoWindow.open(this.props.map);
-        ReactDOM.render(this.props.children, document.getElementById('info-window-wrapper'));
     }
 
     showActivePlaceWIthDrivingTimes(directions, place) {
-        console.log('showing with directions', directions, place);
         this.props.dispatch({
             type: 'SET_ACTIVE_PLACE_DETAILS',
             activePlaceDetails: place,
