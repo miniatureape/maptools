@@ -25,12 +25,21 @@ export default class PlaceListItem extends React.Component {
 
         return (
         <div className="place-item clearfix">
-            <BasicPlaceDetails place={this.props.place} />
+            <BasicPlaceDetails place={place} />
             <div>
+                { place.note.message && 
+                    <blockquote className="place-item-message">{place.note.message}</blockquote>
+                }
                 <MdCreate 
+                    onClick={() => this.props.editNote(place)}
                     className="float-left" />
                 {originMarkup}
             </div>
+            {this.props.place.note.isOpen && (
+                <textarea 
+                    onChange={(e) => this.props.editNoteMessage(place, e.target.value)}
+                    defaultValue={this.props.place.note.message}></textarea>
+            )}
         </div>
         )
     }

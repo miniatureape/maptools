@@ -64,7 +64,6 @@ export default class ExplorationMap extends React.Component {
         if (this.props.searched && this.map) {
             this.setCenterWithoutTriggeringEvent(this.props.center);
         }
-            console.log('active place in props', this.props.activePlace);
         return (
             <div 
                 className="exploration-map" 

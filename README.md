@@ -36,6 +36,7 @@ place
     - [ ]  On update, save store to local storage or something for now.
     - [ ]  On load read store from local storage or something.
     - [ ]  Figure out why google maps balks if I don't null out the active place
-- [o]  Other
+- [.]  Other
     - [ ]  Move clearfix into App.css
     - [X]  Consider changing "Home" to "Origin"
+    - [ ] You should probably make the notes section an object indexed by place id or something. Haivng it nested is a bummer.
