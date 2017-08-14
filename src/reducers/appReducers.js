@@ -36,11 +36,9 @@ const appReducers = (state = [], action) => {
             }
             break;
         case 'CHANGE_CENTER_ON_SEARCH':
-            let activePlace = action.activePlace.placeId || null;
             return {
                 ...state,
                 center: action.center,
-                activePlace: activePlace,
                 searched: true
             }
             break;

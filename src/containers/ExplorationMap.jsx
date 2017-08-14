@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import ExplorationMap from '../components/ExplorationMap';
+import { setActivePlace } from '../actions/index'
 
 export default connect((state) => { 
         return state;
@@ -19,13 +20,7 @@ export default connect((state) => {
             bounds: bounds
         }),
         setActivePlace: (latLng, placeId) => {
-            dispatch({
-                type: 'SET_ACTIVE_PLACE',
-                activePlace: {
-                    latLng: latLng,
-                    placeId: placeId
-                }
-            });
+            dispatch(setActivePlace(latLng, placeId));
         },
         clearActivePlace: () => {
             dispatch({

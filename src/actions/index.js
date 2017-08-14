@@ -1,6 +1,9 @@
-export const setCenter = (latLng) => {
+export function setActivePlace(latLng, placeId) {
     return {
-        type: "CENTER_MAP",
-        latLng: latLng
+        type: 'SET_ACTIVE_PLACE',
+        activePlace: {
+            latLng,
+            placeId,
+        }
     }
 }

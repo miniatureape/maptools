@@ -1,5 +1,6 @@
 import SearchBox from '../components/SearchBox';
 import { connect } from 'react-redux';
+import { setActivePlace } from '../actions/index'
 
 function mapDispatchToProps(dispatch) {
     // TODO fact this and the other instance of it into an action.
@@ -8,8 +9,10 @@ function mapDispatchToProps(dispatch) {
             dispatch({
                 type: 'CHANGE_CENTER_ON_SEARCH',
                 center: place.geometry.location,
-                activePlace: place
             })
+            dispatch(
+                setActivePlace(place.geometry.location, place.place_id)
+            ),
             dispatch({
                 type: 'END_SEARCH',
             })
