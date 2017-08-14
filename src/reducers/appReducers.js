@@ -23,10 +23,25 @@ const appReducers = (state = [], action) => {
                 displayContextMap: !state.displayContextMap
             }
             break;
+        case 'END_SEARCH':
+            return {
+                ...state,
+                searched: false
+            }
+            break;
         case 'CHANGE_CENTER':
             return {
                 ...state,
                 center: action.center
+            }
+            break;
+        case 'CHANGE_CENTER_ON_SEARCH':
+            let activePlace = action.activePlace.placeId || null;
+            return {
+                ...state,
+                center: action.center,
+                activePlace: activePlace,
+                searched: true
             }
             break;
         case 'CHANGE_ZOOM':

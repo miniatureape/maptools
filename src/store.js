@@ -11,6 +11,7 @@ if (window.localStorage['state']) {
 } else {
     defaultState = {
         displayContextMap: false,
+        searched: false,
         center: {
             lat: 40.7128,
             lng: -74.0059

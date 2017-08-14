@@ -13,10 +13,32 @@ export default class ExplorationMap extends React.Component {
         });
     }
 
-    setupMapListeners() {
-        this.map.addListener('center_changed', () => {
+    /* 
+     * We have to hack around the fact that the maps are linked
+     * and only fire the center changed listener handle when the mouse is moving
+     * the exploration map. In the case that we're programatically changing
+     * the center we can remove the listener, center and then rebind it. 
+     * */
+    setupCenterListener() {
+        this.centerListener = this.map.addListener('center_changed', () => {
             this.props.changeCenter(this.map.getCenter())
         });
+    }
+
+    tearDownCenterListener() {
+        this.centerListener.remove();
+    }
+
+    setCenterWithoutTriggeringEvent() {
+        this.tearDownCenterListener();
+        this.map.setCenter(this.props.center);
+        this.setupCenterListener();
+    }
+
+    setupMapListeners() {
+
+        this.setupCenterListener();
+
         this.map.addListener('zoom_changed', () => {
             this.props.changeZoom(this.map.getZoom())
         });
@@ -39,6 +61,9 @@ export default class ExplorationMap extends React.Component {
     }
 
     render() {
+        if (this.props.searched && this.map) {
+            this.setCenterWithoutTriggeringEvent(this.props.center);
+        }
         return (
             <div 
                 className="exploration-map" 
