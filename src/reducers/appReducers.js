@@ -54,7 +54,6 @@ const appReducers = (state = [], action) => {
                 bounds: action.bounds
             }
             break;
-
         case 'SET_ACTIVE_PLACE':
             return {
                 ...state,

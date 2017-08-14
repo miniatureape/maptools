@@ -2,7 +2,6 @@
 
 A tool for doing advance research of a place.
 
-
 place
 {
     mapData: all the google maps data,
@@ -27,7 +26,7 @@ place
     - [ ] You can remove a place from the list
     - [x] YOu can search to move the map.
         - [X] When you search, there is an infowindow that allows you to save the location.
-            - [ ] If you search for a place that doesn't have a place id, you have some way of saving it. (key on latlng?)
+            - [ ] (This might not actually be an issue.) If you search for a place that doesn't have a place id, you have some way of saving it. (key on latlng?)
 - [ ]  Exploration Map
     - [x]  Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
     - [ ]  When you save a place, the info window closes.
