@@ -25,13 +25,14 @@ place
         - [ ]  Text and submit button.
         - [ ]  If you open one, all the others close.
     - [ ] You can remove a place from the list
-    - [ ] YOu can search to move the map.
-        - [ ] When you search, there is an infowindow that allows you to save the location.
+    - [x] YOu can search to move the map.
+        - [X] When you search, there is an infowindow that allows you to save the location.
+            - [ ] If you search for a place that doesn't have a place id, you have some way of saving it. (key on latlng?)
 - [ ]  Exploration Map
-    - [ ]  Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
+    - [x]  Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
     - [ ]  When you save a place, the info window closes.
     - [ ]  You cannot save a place that youv'e alread saved. The button should not appear.
-    - [ ]  If there is a home set, it should fetch travel times and display them there.
+    - [x]  If there is a home set, it should fetch travel times and display them there.
 - [ ]  Persistance
     - [ ]  On update, save store to local storage or something for now.
     - [ ]  On load read store from local storage or something.
