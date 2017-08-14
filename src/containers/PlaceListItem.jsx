@@ -7,9 +7,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setHome: function(place) {
+        setOrigin: function(place) {
             dispatch({
-                type: "SET_PLACE_AS_HOME",
+                type: "SET_PLACE_AS_ORIGIN",
                 place: place
             });
         }

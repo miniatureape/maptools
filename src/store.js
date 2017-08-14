@@ -31,10 +31,10 @@ store.subscribe(function() {
     window.localStorage['state'] = JSON.stringify(store.getState());
 });
 
-export function findHome() {
+export function findOrigin() {
     return (store.getState())
         .places
-        .map((place) => place.isHome ? place : null)
+        .map((place) => place.isOrigin ? place : null)
         .filter(n => n)
         .shift()
 }

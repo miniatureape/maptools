@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { findHome } from '../store'
+import { findOrigin } from '../store'
 
 export default class ActivePlace extends React.Component {
 
@@ -27,11 +27,11 @@ export default class ActivePlace extends React.Component {
 
         this.placesService.getDetails({placeId: this.props.activePlace.placeId}, (place, status) => {
 
-            let home = findHome(this.props.places);
+            let origin = findOrigin(this.props.places);
 
-            if (home) {
+            if (origin) {
                 this.directionsMatrixService.getDistanceMatrix({
-                    origins: [home.mapData.geometry.location],
+                    origins: [origin.mapData.geometry.location],
                     destinations: [place.geometry.location],
                     travelMode: 'DRIVING',
                 }, (e) => this.showActivePlaceWIthDrivingTimes(e, place) );

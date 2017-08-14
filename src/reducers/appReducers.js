@@ -5,7 +5,7 @@ function createPlace(mapPlaceData, directions) {
     }
     return {
         mapData: mapPlaceData,
-        isHome: false,
+        isOrigin: false,
         travelTime: travelTime,
         note: {
             message: "",
@@ -75,9 +75,9 @@ const appReducers = (state = [], action) => {
                 ...state,
                 places: [...state.places, action.place]
             }
-        case "SET_PLACE_AS_HOME":
+        case "SET_PLACE_AS_ORIGIN":
             let places = state.places.map((place) => {
-                place.isHome = place.mapData.place_id === action.place.mapData.place_id;
+                place.isOrigin = place.mapData.place_id === action.place.mapData.place_id;
                 return place;
             });
             return {

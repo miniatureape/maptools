@@ -5,7 +5,7 @@ A tool for doing advance research of a place.
 place
 {
     mapData: all the google maps data,
-    isHome: bool,
+    isOrigin: bool,
     travelTime: all the google maps travel time.
     note: {
         message: "",
@@ -36,6 +36,6 @@ place
     - [ ]  On update, save store to local storage or something for now.
     - [ ]  On load read store from local storage or something.
     - [ ]  Figure out why google maps balks if I don't null out the active place
-- [ ]  Other
+- [o]  Other
     - [ ]  Move clearfix into App.css
-    - [ ]  Consider changing "Home" to "Origin"
+    - [X]  Consider changing "Home" to "Origin"
