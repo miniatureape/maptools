@@ -35,6 +35,8 @@ place
     - [ ] You cannot save a place that youv'e alread saved. The button should not appear.
     - [x] If there is a home set, it should fetch travel times and display them there.
     - [ ] You need to think about this, but you probably do want to add markers. Either they're there all the time or when you select a place or something.
+- [ ] Context Map
+    - [ ] Changing zoom on the context map should keep that zoom level difference in place.
 - [o]  Persistance
     - [X]  On update, save store to local storage or something for now.
     - [X]  On load read store from local storage or something.
@@ -48,3 +50,4 @@ Ideas:
 
 Should you see home marked on the context map?
 You should be able to categorize or tag things and filter your list by them.
+Needs integration with street view? Opens street view in the context map place, another window or just adds a link to it.
