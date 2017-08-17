@@ -1,12 +1,18 @@
 import React from 'react'
+import FaPlusCircle from 'react-icons/lib/fa/plus-circle'
+
 
 import 'style-loader!./PlaceList.css'
 import PlaceListItem from '../containers/PlaceListItem'
-import SearchBox from '../containers/SearchBox'
 
 export default class PlaceList extends React.Component {
     render() {
         let contents;
+
+        let drawerDisplayClass = '';
+        if (!this.props.displayDrawer) {
+            drawerDisplayClass = 'hidden';
+        }
 
         if (this.props.places.length === 0) {
             contents = (
@@ -23,12 +29,14 @@ export default class PlaceList extends React.Component {
                 })
         }
         return (
-            <div id="place-list">
-                <div className="header">
-                    <SearchBox />
-                </div>
-                <div className="clearfix">
+            <div className={"drawer " + drawerDisplayClass} >
+                <div className="place-list">
                     { contents }
+                </div>
+                <div className="drawer-controls">
+                    <FaPlusCircle 
+                        className="drawer-button"
+                        onClick={this.props.toggleDrawer} />
                 </div>
             </div>
         )

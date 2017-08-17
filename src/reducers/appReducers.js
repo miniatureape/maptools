@@ -120,6 +120,11 @@ const appReducers = (state = [], action) => {
                     return place;
                 })
             }
+        case "TOGGLE_DRAWER":
+            return {
+                ...state,
+                displayDrawer: !state.displayDrawer,
+            }
         default:
             return state;
     }

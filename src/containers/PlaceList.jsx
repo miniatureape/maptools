@@ -5,4 +5,14 @@ function mapStateToProps(state) {
     return {...state};
 }
 
-export default connect(mapStateToProps)(PlaceList)
+function mapDispatchToProps(dispatch) {
+    return {
+        toggleDrawer: function() {
+            dispatch({
+                type: 'TOGGLE_DRAWER'
+            });
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceList)

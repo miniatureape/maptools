@@ -1,15 +1,33 @@
-#place-list {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-    width: 350px;
-    overflow: auto;
+.drawer {
+    flex: 1;
+    display: flex;
+    background: transparent;
 }
 
-#place-list .header, #place-list .message {
+.place-list {
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+    overflow: auto;
+    padding: 75px 8px 0;
+    flex: 10;
+}
+
+.drawer-controls {
+    background: transparent;
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+}
+
+.drawer-button {
+    font-size: 36px;
+}
+
+.drawer.hidden .place-list {
+    width: 0;
+}
+
+#place-list #place-list .message {
     padding: 8px;
 }
 

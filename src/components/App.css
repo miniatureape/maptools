@@ -1,0 +1,7 @@
+.app-wrapper {
+    display: flex;
+}
+
+.map-wrapper {
+    flex: 2;
+}
