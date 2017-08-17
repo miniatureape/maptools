@@ -51,3 +51,4 @@ Ideas:
 Should you see home marked on the context map?
 You should be able to categorize or tag things and filter your list by them.
 Needs integration with street view? Opens street view in the context map place, another window or just adds a link to it.
+    Maybe the context pane should show street view if there is an active place?
