@@ -13,23 +13,7 @@ function mapDispatchToProps(dispatch) {
                 place: place
             });
         },
-
-        editNote: function(place) {
-            dispatch({
-                type: "OPEN_NOTE_EDIT",
-                place: place
-            });
-        },
-
-        editNoteMessage: function(place, value) {
-            dispatch({
-                type: "EDIT_NOTE_MESSAGE",
-                place: place,
-                message: value
-            });
-        }
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceListItem)

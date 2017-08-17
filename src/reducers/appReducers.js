@@ -14,14 +14,6 @@ function createPlace(mapPlaceData, directions) {
     }
 }
 
-function editPlaceInPlaces(places, place, edits) {
-    places[index] = {
-        ...place,
-        ...edits
-    }
-    return places;
-}
-
 const appReducers = (state = [], action) => {
 
     switch (action.type) {
@@ -100,6 +92,17 @@ const appReducers = (state = [], action) => {
                     place.note = {
                         ...place.note,
                         isOpen: place.mapData.place_id === action.place.mapData.place_id
+                    }
+                    return place;
+                })
+            }
+        case "CLOSE_NOTE_EDIT":
+            return {
+                ...state,
+                places: state.places.map((place) => {
+                    place.note = {
+                        ...place.note,
+                        isOpen: false
                     }
                     return place;
                 })

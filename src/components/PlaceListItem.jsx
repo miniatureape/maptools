@@ -1,8 +1,8 @@
 import React from 'react'
 import 'style-loader!./PlaceListItem.css'
 import BasicPlaceDetails from './BasicPlaceDetails'
-import MdCreate from 'react-icons/lib/md/create'
 import MdHome from 'react-icons/lib/md/home'
+import Note from '../containers/Note'
 
 export default class PlaceListItem extends React.Component {
     render() {
@@ -20,28 +20,14 @@ export default class PlaceListItem extends React.Component {
             originMarkup = <MdHome
                 className="float-right origin not-origin"
                 title= "Set this as your origin"
-                onClick={() => this.props.setOrigin(place)}
-               />
-        }
+                onClick={() => this.props.setOrigin(place)} /> }
 
         return (
-        <div className="place-item clearfix">
-            <BasicPlaceDetails place={place} />
-            <div>
-                { place.note.message && 
-                    <blockquote contentEditable={true} className="place-item-message">{place.note.message}</blockquote>
-                }
-                <MdCreate 
-                    onClick={() => this.props.editNote(place)}
-                    className="float-left" />
+            <div className="place-item clearfix">
+                <BasicPlaceDetails place={place} />
+                <Note place={place} />
                 {originMarkup}
             </div>
-            {this.props.place.note.isOpen && (
-                <textarea 
-                    onChange={(e) => this.props.editNoteMessage(place, e.target.value)}
-                    defaultValue={this.props.place.note.message}></textarea>
-            )}
-        </div>
         )
     }
 }
