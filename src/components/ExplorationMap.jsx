@@ -64,6 +64,9 @@ export default class ExplorationMap extends React.Component {
         if (this.props.searched && this.map) {
             this.setCenterWithoutTriggeringEvent(this.props.center);
         }
+        if (this.map) {
+            google.maps.event.trigger(this.map, "resize");
+        }
         return (
             <div 
                 className="exploration-map" 

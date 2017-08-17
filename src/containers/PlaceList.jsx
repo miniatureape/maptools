@@ -7,9 +7,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        toggleDrawer: function() {
+        signalResize: () => {
             dispatch({
-                type: 'TOGGLE_DRAWER'
+                type: "CONTAINER_RESIZED"
+            });
+            dispatch({
+                type: "CONTAINER_RESIZE_HANDLED"
             });
         }
     }

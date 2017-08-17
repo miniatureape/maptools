@@ -125,6 +125,16 @@ const appReducers = (state = [], action) => {
                 ...state,
                 displayDrawer: !state.displayDrawer,
             }
+        case "CONTAINER_RESIZED":
+            return {
+                ...state,
+                didResize: true
+            }
+        case "CONTAINER_RESIZE_HANDLED":
+            return {
+                ...state,
+                didResize: false
+            }
         default:
             return state;
     }

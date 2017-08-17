@@ -1,17 +1,23 @@
 import React from 'react'
 import FaPlusCircle from 'react-icons/lib/fa/plus-circle'
 
-
 import 'style-loader!./PlaceList.css'
 import PlaceListItem from '../containers/PlaceListItem'
 
 export default class PlaceList extends React.Component {
-    render() {
-        let contents;
 
-        let drawerDisplayClass = '';
-        if (!this.props.displayDrawer) {
-            drawerDisplayClass = 'hidden';
+    componentDidMount() {
+        this.drawerEl.addEventListener('transitionend', () => {
+            this.props.signalResize();
+        });
+    }
+
+    render() {
+        let contents,
+            drawerClass = 'hidden';
+
+        if (this.props.displayDrawer) {
+            drawerClass = '';
         }
 
         if (this.props.places.length === 0) {
@@ -29,14 +35,11 @@ export default class PlaceList extends React.Component {
                 })
         }
         return (
-            <div className={"drawer " + drawerDisplayClass} >
+            <div 
+                className={"drawer " + drawerClass}
+                ref={(el) => this.drawerEl = el}>
                 <div className="place-list">
                     { contents }
-                </div>
-                <div className="drawer-controls">
-                    <FaPlusCircle 
-                        className="drawer-button"
-                        onClick={this.props.toggleDrawer} />
                 </div>
             </div>
         )

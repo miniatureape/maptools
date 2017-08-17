@@ -5,7 +5,7 @@ import ExplorationMap from '../containers/ExplorationMap'
 import ContextMap from '../containers/ContextMap'
 import PlaceList from '../containers/PlaceList'
 import ContextMapDisplayToggle from '../containers/ContextMapDisplayToggle'
-import Controls from './Controls'
+import Controls from '../containers/Controls'
 
 function App(props) {
     return (
