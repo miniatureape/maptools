@@ -5,7 +5,9 @@ import MdMenu from 'react-icons/lib/md/menu'
 export default function Controls(props) {
     return (
         <div className="controls">
-            <MdMenu onClick={() => props.toggleDrawer() } />
+            <MdMenu 
+                className="hamburger"
+                onClick={() => props.toggleDrawer() } />
             <SearchBox />;
         </div>
     )
