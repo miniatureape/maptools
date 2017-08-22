@@ -15,7 +15,7 @@ place
 
 ## TODOS
 
-- [O]  PlaceList 
+- [o]  PlaceList 
     - [o]  A button to set one as "Home"
         - [X] It marks the current place as home 
         - [ ] It recalcultes travel times for all saved places if home has changed.
@@ -29,6 +29,7 @@ place
         - [X] When you search, there is an infowindow that allows you to save the location.
             - [ ] (This might not actually be an issue.) If you search for a place that doesn't have a place id, you have some way of saving it. (key on latlng?)
     - [ ] There is a button to set your prefered travel method?
+    - [ ] You should be able to categorize places.
 - [o]  Exploration Map
     - [x] Make the info window look just like the place list so you can re-use that component. (But "save" button instead of notes section)
     - [X] When you save a place, the info window closes.
@@ -41,10 +42,23 @@ place
     - [X]  On update, save store to local storage or something for now.
     - [X]  On load read store from local storage or something.
     - [ ]  Figure out why google maps balks if I don't null out the active place
+    - [ ] Save to Database
+        - [ ] Create basic schema. Basically a primary key with a json blob.
+        - [ ] Create an endpoint to add places to your thingy.
 - [o]  Other
     - [X]  Move clearfix into App.css
     - [X]  Consider changing "Home" to "Origin"
     - [ ] You should probably make the notes section an object indexed by place id or something. Having it nested is a bummer.
+    - [ ] You can move a lot of conditional code in your components into your containers.
+
+Sharing Flow:
+
+When you land, you can start adding etc. Its all saved in local storage.
+If you sign in you are redirected to a "private" url 
+if you come back to `/` and you are signed in, you are taken to a list of your places
+If you come back to `/<private-url` that thing is loaded from the server
+Periodically we store the UI on the server. (Need to handle conflicts).
+There is an endpoint at `/<private-url/add` that lets you add places.
 
 Ideas:
 
