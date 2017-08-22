@@ -6,7 +6,8 @@ export default class InfoWindowContents extends React.Component {
     render() {
         let place = this.props.activePlaceDetails,
             photoObject,
-            photoUrl;
+            photoUrl,
+            alreadySaved;
 
         if (place.mapData.photos) {
             photoObject = place.mapData.photos[0];
@@ -20,7 +21,7 @@ export default class InfoWindowContents extends React.Component {
             <div id="info-wrapper">
                 <BasicPlaceDetails place={place} />
                 <img src={photoUrl} className="place-photo" />
-                <div id="something" onClick={() => this.props.savePlace(place) }>save</div>
+                { !this.props.activePlaceIsSaved && <div id="something" onClick={() => this.props.savePlace(place) }>save</div>}
             </div>
         )
     }
