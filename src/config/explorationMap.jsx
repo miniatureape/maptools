@@ -1,3 +1,4 @@
 export default {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    streetViewControl: true
 }
