@@ -3,6 +3,7 @@ import 'style-loader!./PlaceListItem.css'
 import BasicPlaceDetails from './BasicPlaceDetails'
 import MdHome from 'react-icons/lib/md/home'
 import Note from '../containers/Note'
+import MdHighlightRemove from 'react-icons/lib/md/highlight-remove'
 
 export default class PlaceListItem extends React.Component {
     render() {
@@ -27,7 +28,8 @@ export default class PlaceListItem extends React.Component {
                 <BasicPlaceDetails place={place} />
                 <Note place={place} />
                 {originMarkup}
+                <MdHighlightRemove onClick={() => this.props.deletePlace(place)} />
             </div>
         )
     }
-}
+};

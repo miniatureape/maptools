@@ -135,6 +135,16 @@ const appReducers = (state = [], action) => {
                 ...state,
                 didResize: false
             }
+        case "REMOVE_PLACE":
+            return {
+                ...state,
+                places: state.places.reduce((carry, place) => {
+                    if (place.mapData.placeId != action.place.mapData.placeId) {
+                        carry.push(place);
+                    }
+                    return carry;
+                }, [])
+            }
         default:
             return state;
     }

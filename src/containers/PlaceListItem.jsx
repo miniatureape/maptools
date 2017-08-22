@@ -13,6 +13,12 @@ function mapDispatchToProps(dispatch) {
                 place: place
             });
         },
+        deletePlace: function(place) {
+            dispatch({
+                type: "REMOVE_PLACE",
+                place: place
+            });
+        }
     }
 }
 
