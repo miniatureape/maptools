@@ -139,7 +139,7 @@ const appReducers = (state = [], action) => {
             return {
                 ...state,
                 places: state.places.reduce((carry, place) => {
-                    if (place.mapData.placeId != action.place.mapData.placeId) {
+                    if (place.mapData.place_id != action.place.mapData.place_id) {
                         carry.push(place);
                     }
                     return carry;
