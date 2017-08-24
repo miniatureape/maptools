@@ -10,7 +10,7 @@ A tool for doing advance research of a place.
 - [ ] It recalculates travel times for all saved places if home has changed.
 - [ ] Add export GeoJSON button.
 - [X] If you click on a place it centers the map on it and sets it active again.
-- [ ] Make title a link
+- [X] Make title a link
 
 ### Future
 

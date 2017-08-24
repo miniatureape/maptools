@@ -19,8 +19,10 @@ export default class InfoWindowContents extends React.Component {
 
         return (
             <div id="info-wrapper">
-                <BasicPlaceDetails place={place} />
-                <img src={photoUrl} className="place-photo" />
+                <a href={place.mapData.website} target="_new">
+                    <BasicPlaceDetails place={place} />
+                    <img src={photoUrl} className="place-photo" />
+                </a>
                 { !this.props.activePlaceIsSaved && <div id="something" onClick={() => this.props.savePlace(place) }>save</div>}
             </div>
         )
