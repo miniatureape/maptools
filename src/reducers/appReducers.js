@@ -57,12 +57,14 @@ const appReducers = (state = [], action) => {
         case 'SET_ACTIVE_PLACE':
             return {
                 ...state,
-                activePlace: action.activePlace
+                activePlace: action.activePlace,
+                center: action.activePlace.latLng,
+                searched: true
             }
         case 'CLEAR_ACTIVE_PLACE':
             return {
                 ...state,
-                activePlace: null
+                activePlace: null,
             }
         case 'SET_ACTIVE_PLACE_DETAILS':
             let activePlaceDetails = createPlace(action.activePlaceDetails, action.directions);

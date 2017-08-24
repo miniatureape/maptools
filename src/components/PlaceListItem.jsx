@@ -23,12 +23,17 @@ export default class PlaceListItem extends React.Component {
                 title= "Set this as your origin"
                 onClick={() => this.props.setOrigin(place)} /> }
 
+        debugger;
         return (
-            <div className="place-item clearfix">
+            <div 
+                onClick={() => this.props.setActivePlace(place.mapData.geometry.location, place.mapData.place_id) }
+                className="place-item clearfix">
                 <BasicPlaceDetails place={place} />
-                <Note place={place} />
-                {originMarkup}
-                <MdHighlightRemove onClick={() => this.props.deletePlace(place)} />
+                <div onClick={(e) => e.stopPropagation() }>
+                    <Note place={place} />
+                    {originMarkup}
+                    <MdHighlightRemove onClick={() => this.props.deletePlace(place)} />
+                </div>
             </div>
         )
     }

@@ -2,23 +2,21 @@
 
 A tool for doing advance research of a place.
 
-place
-{
-    mapData: all the google maps data,
-    isOrigin: bool,
-    travelTime: all the google maps travel time.
-    note: {
-        message: "",
-        isOpen: bool,
-    }
-}
 
 ## TODOS
+
+### Version .1
+
+- [ ] It recalculates travel times for all saved places if home has changed.
+- [ ] Add export GeoJSON button.
+- [X] If you click on a place it centers the map on it and sets it active again.
+- [ ] Make title a link
+
+### Future
 
 - [o]  PlaceList 
     - [o]  A button to set one as "Home"
         - [X] It marks the current place as home 
-        - [ ] It recalcultes travel times for all saved places if home has changed.
     - [X] There is a button that exposes the UI.
     - [X] You can click the notes button to view notes and add a note:
         - [X] Text
@@ -60,9 +58,20 @@ If you come back to `/<private-url` that thing is loaded from the server
 Periodically we store the UI on the server. (Need to handle conflicts).
 There is an endpoint at `/<private-url/add` that lets you add places.
 
-Ideas:
+### Further Ideas:
 
 Should you see home marked on the context map?
 You should be able to categorize or tag things and filter your list by them.
 Needs integration with street view? Opens street view in the context map place, another window or just adds a link to it.
     Maybe the context pane should show street view if there is an active place?
+    
+place
+{
+    mapData: all the google maps data,
+    isOrigin: bool,
+    travelTime: all the google maps travel time.
+    note: {
+        message: "",
+        isOpen: bool,
+    }
+}

@@ -1,6 +1,8 @@
 import PlaceListItem from '../components/PlaceListItem'
 import { connect } from 'react-redux';
 
+import { setActivePlace } from '../actions/index'
+
 function mapStateToProps(state) {
     return state;
 }
@@ -18,7 +20,10 @@ function mapDispatchToProps(dispatch) {
                 type: "REMOVE_PLACE",
                 place: place
             });
-        }
+        },
+        setActivePlace: (latLng, placeId) => {
+            dispatch(setActivePlace(latLng, placeId));
+        },
     }
 }
 
