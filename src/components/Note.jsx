@@ -16,13 +16,17 @@ export default class Note extends React.Component {
     }
 
     getCreateIconDOM(place, showCreateIcon) {
-        let iconDOM = (<MdCreate 
-                  className="float-left"
-                  onClick={ () => {
+        let iconDOM = (
+            <div onClick={ () => {
                       this.noteEl.focus();
                       this.props.showEmptyNote(place);
-                  }}
-          />)
+                  }
+                }>
+                <MdCreate 
+                  className="float-left"
+                  /> Add a note
+            </div>
+          )
         return showCreateIcon ? iconDOM : null;
     }
 

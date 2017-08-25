@@ -15,12 +15,6 @@ function mapDispatchToProps(dispatch) {
                 place: place
             });
         },
-        deletePlace: function(place) {
-            dispatch({
-                type: "REMOVE_PLACE",
-                place: place
-            });
-        },
         setActivePlace: (latLng, placeId) => {
             dispatch(setActivePlace(latLng, placeId));
         },
