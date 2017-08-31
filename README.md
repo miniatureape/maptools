@@ -1,6 +1,13 @@
 # Maptools
 
-A tool for doing advance research of a place.
+For one reason or another, I was looking really hard at various places and wondering what it would mean to live in them. This meant spending a lot of time in Google Maps, dragging around at the highest zoom level and click on various places. "Here is a super market, if I lived here in this place, I could use it. Here is a school. Maybe my children could go there."
+
+There were mainly two things deficient in the Google Maps interface: 
+
+1. I would lose my sense of how far I got from where I started looking. Scrolling around at maximum zoom, moving further and further away as I explored a region, I would find myself many miles away. I wanted another linked map that was more zoomed out that showed me moving around the region rather than the street. I made an experiment in a few lines of javascript.
+2. I would be interested in travel times between places, but it was onerous to constantly type two places into google maps and look for directions. I wanted to always see travel times from some "home base". I made a litle command line script to make it faster for me to do this.
+
+I decided there was probably more I could do, so I built this as a demo and a way to learn some react and redux. It implements some basic functionality and I have some more ideas on where to take it, but I'm going to leave it here for now and wait until I actually need it again so I can build it from a place of need instead of merely as a theoretical exercise.
 
 
 ## TODOS
