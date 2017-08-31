@@ -14,6 +14,31 @@ function createPlace(mapPlaceData, directions) {
     }
 }
 
+function updatePlacesWithNewTravelTimes(state, directions) {
+    let durations = directions.destinationAddresses.map((address, i) => {
+        return directions.rows[0].elements[i].duration.text;
+    }, {})
+
+    let places = state.places.map((place, i) => {
+        let newTravelTime = durations[i];
+
+        if (place.isOrigin) {
+            newTravelTime = null;
+        }
+
+        return {
+            ...place,
+            travelTime: newTravelTime
+        }
+
+    });
+
+    return {
+        ...state,
+        places: places
+    };
+}
+
 const appReducers = (state = [], action) => {
 
     switch (action.type) {
@@ -78,6 +103,10 @@ const appReducers = (state = [], action) => {
                 places: [...state.places, action.place],
                 activePlace: null,
             }
+        case "RECEIVE_TRAVEL_TIMES":
+            return {
+                ...state
+            }
         case "SET_PLACE_AS_ORIGIN":
             let places = state.places.map((place) => {
                 place.isOrigin = place.mapData.place_id === action.place.mapData.place_id;
@@ -137,6 +166,8 @@ const appReducers = (state = [], action) => {
                 ...state,
                 didResize: false
             }
+        case "RECEIVED_DIRECTIONS":
+            return updatePlacesWithNewTravelTimes(state, action.directions);
         case "REMOVE_PLACE":
             return {
                 ...state,

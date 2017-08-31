@@ -5,6 +5,7 @@ import App from './components/App';
 import { store } from './store';
 import * as indexCss from './index.css';
 
+
 window.initMaps = () => {
     ReactDOM.render(
         <Provider store={store}>

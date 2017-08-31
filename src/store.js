@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk'
 import appReducers from './reducers/appReducers';
 
 let defaultState;
@@ -26,7 +27,13 @@ if (window.localStorage['state']) {
     }
 }
 
-let store = createStore(appReducers, defaultState);
+let store = createStore(
+    appReducers, 
+    defaultState,
+    applyMiddleware(
+        thunkMiddleware
+    )
+);
 
 store.subscribe(function() {
     window.localStorage['state'] = JSON.stringify(store.getState());

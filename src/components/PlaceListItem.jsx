@@ -9,18 +9,20 @@ export default class PlaceListItem extends React.Component {
     render() {
 
         let place = this.props.place;
+        let places = this.props.places;
+        console.log('places', places);
         let originMarkup;
 
         if (place.isOrigin) {
             originMarkup = <div
-                    onClick={() => this.props.setOrigin(place)}
+                    onClick={() => this.props.setOrigin(place, places)}
                 ><MdHome
                 className="origin"
                 title= "This is your origin"
                /> Home </div>
         } else {
             originMarkup = <div
-                    onClick={() => this.props.setOrigin(place)} 
+                    onClick={() => this.props.setOrigin(place, places)} 
                     ><MdHome
                 className="origin not-origin"
                 title= "Set this as your origin"
