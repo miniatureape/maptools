@@ -33,6 +33,9 @@ export default class PlaceList extends React.Component {
                 this.props.places.map((place) => { 
                     return <PlaceListItem key={place.mapData.place_id} place={place} places={this.props.places} />;
                 })
+            contents.push(
+                <a onClick={this.props.exportPlaces}>Export</a>
+            );
         }
         return (
             <div 

@@ -1,3 +1,5 @@
+import GeoJSON from 'geojson';
+
 function createPlace(mapPlaceData, directions) {
     let travelTime = null;
     if (directions) {
@@ -12,6 +14,16 @@ function createPlace(mapPlaceData, directions) {
             isOpen: false,
         }
     }
+}
+
+function placesToGeoJSON(places) {
+    places = places.map((place) => {
+        return {
+            ...place.mapData,
+            note: place.note.message
+        }
+    });
+    return GeoJSON.parse(places, {Point: ['geometry.location.lng', 'geometry.location.lat'], include: ['name', 'note']});
 }
 
 function updatePlacesWithNewTravelTimes(state, directions) {
@@ -178,6 +190,10 @@ const appReducers = (state = [], action) => {
                     return carry;
                 }, [])
             }
+        case "EXPORT_PLACES":
+            let placesGeoJSON = placesToGeoJSON(state.places);
+            let fileURL = 'data:application/octetstream;charset=utf8,' +  encodeURIComponent(JSON.stringify(placesGeoJSON));
+            window.location = fileURL
         default:
             return state;
     }

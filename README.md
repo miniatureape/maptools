@@ -7,8 +7,8 @@ A tool for doing advance research of a place.
 
 ### Version .1
 
-- [ ] It recalculates travel times for all saved places if home has changed.
-- [ ] Add export GeoJSON button.
+- [X] It recalculates travel times for all saved places if home has changed.
+- [X] Add export GeoJSON button.
 - [X] If you click on a place it centers the map on it and sets it active again.
 - [X] Make title a link
 

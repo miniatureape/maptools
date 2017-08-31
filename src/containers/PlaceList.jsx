@@ -14,6 +14,11 @@ function mapDispatchToProps(dispatch) {
             dispatch({
                 type: "CONTAINER_RESIZE_HANDLED"
             });
+        },
+        exportPlaces: () => {
+            dispatch({
+                type: "EXPORT_PLACES"
+            });
         }
     }
 }

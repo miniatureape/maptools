@@ -10,7 +10,6 @@ export default class PlaceListItem extends React.Component {
 
         let place = this.props.place;
         let places = this.props.places;
-        console.log('places', places);
         let originMarkup;
 
         if (place.isOrigin) {
